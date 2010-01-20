@@ -1,7 +1,9 @@
 This project is a demo program that shows how Spring 3 "JavaConfig"
 works within a Scala project.
 
-Some more info are available here : http://fanf42.blogspot.com/XXXXX
+More info are available here: 
+http://fanf42.blogspot.com/2010/01/scala-and-spring-3-javaconfig.html
+
 Author: Francois Armand
 License: Apache Software License v2 
 
@@ -20,7 +22,7 @@ Download and test
 You will need to have a JVM installed, at least 1.5, and recent Maven 2 version.
 
 Clone the repos:
-% git clone XXXXX
+% git clone git@github.com:fanf/scala-spring3-upload.git
 
 Compile and launch the server:
 % mvn clean jetty:run

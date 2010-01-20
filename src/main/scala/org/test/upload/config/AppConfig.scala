@@ -15,6 +15,7 @@ class ScalaAppConfig {
 	val logger = LoggerFactory.getLogger(classOf[ScalaAppConfig])
 	val defaultSleepTime = 10
 	
+	//get the value from configuration.properties
 	@Value("#{configuration.wait}")
 	var sleepTime = ""
 	
@@ -23,7 +24,7 @@ class ScalaAppConfig {
 	 */
 	@Bean 
 	def fileProcessor = {
-		//try to parse the configurated waited time, default to defaultSleepTime if parsing goes wrong
+		//try to parse the configured waiting time, default to defaultSleepTime if parsing goes wrong
 		val wait = try {
 			sleepTime.toLong
 		} catch {
@@ -36,7 +37,7 @@ class ScalaAppConfig {
 	 * configure the common-upload file handler
 	 */
 	@Bean 
-	def multipartResolver() = {
+	def multipartResolver = {
 		val c = new CommonsMultipartResolver()
 		c.setMaxUploadSize(10000000)
 		c
@@ -46,5 +47,5 @@ class ScalaAppConfig {
 	 * Configure the endpoint
 	 */
 	@Bean
-	def endpoint() = new UploadEndpoint(fileProcessor)
+	def endpoint = new UploadEndpoint(fileProcessor)
 }
