@@ -1,0 +1,17 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http:/java.sun.com/dtd/web-app_2_4.dtd">
+
+	<servlet>
+		<servlet-name>upload</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>upload</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>

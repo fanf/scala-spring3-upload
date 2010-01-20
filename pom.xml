@@ -1,0 +1,160 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.test</groupId>
+  <artifactId>upload-file</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  
+  	<properties>
+		<!-- UTF-8 for everyone -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4j-version>1.5.8</slf4j-version>
+		<logback-version>0.9.17</logback-version>
+		<scala-version>2.8.0-SNAPSHOT</scala-version>
+		<scala-maven-plugin-version>2.13.1</scala-maven-plugin-version>
+		<spring-version>3.0.0.RELEASE</spring-version>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>scala-tools.org</id>
+			<name>Scala-tools Maven2 Repository</name>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
+		<repository>
+			<id>scala-snapshots.org</id>
+			<name>Scala-tools Maven2 Repository snapshots</name>
+			<url>http://scala-tools.org/repo-snapshots</url>
+		</repository>
+		<repository>
+			<id>no-commons-logging</id>
+			<name>No-commons-logging Maven Repository</name>
+			<layout>default</layout>
+			<url>http://no-commons-logging.zapto.org/mvn2</url>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+
+	</repositories>
+	<build>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<version>${scala-maven-plugin-version}</version> 
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<configuration>
+					<contextPath>/</contextPath>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>${scala-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<!--  test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>		
+				<!-- Compile dependencies -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<!-- Needed for fileupload -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<!-- Spring Framework Project libraries -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- Needed to use spring configuration by annotation -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!-- Container-provided dependencies-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		
+		<!--  slf4 / no common logging / etc -->
+			<!--
+			All the following is related to our will to NOT use Commong-logging
+		-->
+		<!-- use no-commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>99.0-does-not-exist</version>
+		</dependency>
+		<!-- no-commons-logging-api, if you need it -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging-api</artifactId>
+			<version>99.0-does-not-exist</version>
+		</dependency>
+		<!-- the slf4j commons-logging replacement -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j-version}</version>
+		</dependency>
+		<!-- the other slf4j jars -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-version}</version>
+		</dependency>
+		<!-- using slf4j native backend -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-version}</version>
+		</dependency> 
+	</dependencies>	
+		
+</project>

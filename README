@@ -1,0 +1,30 @@
+This project is a demo program that shows how Spring 3 "JavaConfig"
+works within a Scala project.
+
+Some more info are available here : http://fanf42.blogspot.com/XXXXX
+Author: Francois Armand
+License: Apache Software License v2 
+
+What does it do ?
+-----------------
+
+The program is a trivial web-application which awaits for incoming
+upload on a given endpoint URL. 
+When uploads come, they are saved in a temp directory to be
+asynchronously processed by an other server configured via IoC
+
+
+Download and test
+-----------------
+
+You will need to have a JVM installed, at least 1.5, and recent Maven 2 version.
+
+Clone the repos:
+% git clone XXXXX
+
+Compile and launch the server:
+% mvn clean jetty:run
+
+Test:
+% curl url -F MyFile.txt=@/path/to/the/file/to/upload http://localhost:8080/upload/
+
